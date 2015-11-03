@@ -1,0 +1,43 @@
+action steps
+set up github upstream
+git init to local folder
+npm init - package.json
+create files and folders
+  gulpfile.js
+  testfile.js
+  index.js
+  .jshintrc
+  .jscsrc
+install dependencies
+install dev-dependencies
+  mocha
+  chai
+  gulp
+  gulp-mocha
+  gulp-jshint
+  gulp-jscs
+
+goals
+
+Open file using fs and read it into a buffer
+Convert buffer into a Javascript Object
+Run a transform on that Javascript Object.
+Turn the transformed object back into a buffer.
+Write that buffer to a new file.
+
+needs:
+tests
+package.json
+
+tasks
+jshint
+jscs
+
+project should be able to take a transform as a callback that will be run once the bitmap file has been read into a buffer.
+
+steps
+require in fs and assign to var
+
+create buffer
+
+
