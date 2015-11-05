@@ -1,6 +1,6 @@
 action steps
-set up github upstream
-git init to local folder
+---set up github upstream
+---git init to local folder
 npm init - package.json
 create files and folders
   gulpfile.js
@@ -35,9 +35,12 @@ jscs
 
 project should be able to take a transform as a callback that will be run once the bitmap file has been read into a buffer.
 
-steps
-require in fs and assign to var
+STEPS
 
-create buffer
+//info on how to read image
+//http://www.javaworld.com/article/2077542/learn-java/java-tip-43--how-to-read-8--and-24-bit-microsoft-windows-bitmaps-in-java-applications.html
+
+//READ THIS
+//http://www.cs.sfu.ca/~ggbaker/165-draft/content/graphics-bitmap.html
 
 

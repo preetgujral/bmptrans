@@ -1,24 +1,58 @@
-//link from article - https://en.wikipedia.org/wiki/BMP_file_format
-
-//info on how to read image
-//http://www.javaworld.com/article/2077542/learn-java/java-tip-43--how-to-read-8--and-24-bit-microsoft-windows-bitmaps-in-java-applications.html
-
-//READ THIS
-//http://www.cs.sfu.ca/~ggbaker/165-draft/content/graphics-bitmap.html
-
 //this is the main transformer
 
 //require fs and assign to var
 var fs = require('fs');
+var importColors = []
+var exportColors = []
+var exportFile = []
+var exportBuffer;
+var imageStart;
+//import in the file
+fs.readFile('./fileA.bmp', function(err, data){
+  if (err) throw err;
+  imageStart = data.readUIntLE(10, 4)
+  //console.log('start of image data: ' + imageStart)
+  //console.log('length of file: ' + data.length)
+//add bytes that contain color info into an array
+  for(i=imageStart; i<data.length; i++) {
+    importColors = importColors.concat(data[i])
+    //console.log(data[i])
+  }
 
-//TODO use fs to grab a file
-  //Need a file to grab. How do I choose a file?
+//invert the colors
+  for (i=0;i<importColors.length;i++) {
+    exportColors[i] = 255-importColors[i]
+  }
 
-  //
+//copy header from original data to  export file
+  for (i=0; i<imageStart; i++) {
+    exportFile = exportFile.concat(data[i])
+  }
+//add exportColors
+  //for each value between in exportColors, concat it to exportFile
 
-//create buffer and assign to var
-var buff = new Buffer();
+  for (i=0; i<exportColors.length; i++) {
+    exportFile = exportFile.concat(exportColors[i])
+  }
+  //console.log('exportColors: ' + exportColors)
+
+//make a new buffer to export
+  exportBuffer = new Buffer(exportFile)
+  //console.log(exportBuffer);
+
+//write to filesystem
+  fs.writeFile( './fileB.bmp', exportBuffer, function(err) {
+    if (err) throw err;
+    console.log('file written');
+  })
+
+
+  //console.log('exportFile: ' + exportFile)
+  //console.log(typeof exportFile)
+  //console.log('exportFile length: ' + exportFile.length)
+  //fs.writeFile the exportFile to fileB.bmp
 
 
 
+})
 
