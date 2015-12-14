@@ -1,0 +1,34 @@
+notes
+
+ 8- and 24-bit flavors. These two represent the most widely encountered varieties.
+
+ Regardless of the Windows DIB sub-type, the file format always consists of a 14-byte file header and a 40-byte information header. These two headers contain information about exactly what is stored in the file and in what order.
+ 150X215 4362 bytes
+
+
+
+
+ import
+
+   255,
+  255,
+  255,
+  255,
+  255,
+  255,
+  252,
+  0 ]
+
+  export
+
+
+    0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  3,
+  255
